@@ -119,8 +119,12 @@ export default function ProductPage() {
         <button className="icon-btn" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
           <FiMenu />
         </button>
-        <Link href="/" className="header-center" aria-label="Diamond Nursery home" style={{ textDecoration: 'none', color: '#1f6b2c', fontSize: '20px', fontWeight: 'bold', textAlign: 'center', lineHeight: '1.2' }}>
-          Diamond Nursery
+        <Link href="/" className="header-center" aria-label="Diamond Nursery home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img 
+            src="https://pub-ce8688bc6c654bcfb99716f7c9373bcd.r2.dev/diamondnursery%20logo.png" 
+            alt="Diamond Nursery Logo" 
+            style={{ height: '36px', width: 'auto', objectFit: 'contain' }} 
+          />
         </Link>
         <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Link href="/admin" className="icon-btn" aria-label="Admin Panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'inherit' }}>
