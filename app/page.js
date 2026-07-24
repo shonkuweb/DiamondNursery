@@ -76,11 +76,7 @@ export default function Home() {
     };
   }, [menuOpen]);
 
-  const activeCategory = dbCategories.find(c => c.id === activeCategoryId || c.id === parseInt(activeCategoryId));
-  const isAdenium = activeCategory?.slug?.toLowerCase() === 'adenium' || activeCategory?.name?.toLowerCase() === 'adenium';
-  const heroStyle = isAdenium
-    ? { background: 'url("https://pub-ce8688bc6c654bcfb99716f7c9373bcd.r2.dev/bpn/1782732499136_c85775c1-ac41-427e-85ce-6bb60f9a3a40__1_.png") center/cover no-repeat' }
-    : {};
+  const heroStyle = {};
 
   return (
     <main className="mobile-page">
@@ -90,10 +86,13 @@ export default function Home() {
         <button className="icon-btn" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
           <FiMenu />
         </button>
-        <Link href="/" className="header-center" aria-label="Blooming Partners Nursery home" style={{ textDecoration: 'none', color: '#1f6b2c', fontSize: '20px', fontWeight: 'bold', textAlign: 'center', lineHeight: '1.2' }}>
-          Blooming Partners Nursery
+        <Link href="/" className="header-center" aria-label="Diamond Nursery home" style={{ textDecoration: 'none', color: '#1f6b2c', fontSize: '20px', fontWeight: 'bold', textAlign: 'center', lineHeight: '1.2' }}>
+          Diamond Nursery
         </Link>
-        <div className="header-actions">
+        <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/admin" className="icon-btn" aria-label="Admin Panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'inherit' }}>
+            <FiUser />
+          </Link>
           <button className="icon-btn" aria-label="Shopping bag" onClick={() => setIsSidebarOpen(true)}>
             <FiShoppingBag />
           </button>
@@ -133,20 +132,6 @@ export default function Home() {
         </>
       )}
 
-      <section className="category-row" aria-label="Plant categories">
-        {dbCategories.map((category, index) => (
-          <article 
-            key={category.id} 
-            className={`category-modern ${activeCategoryId === category.id ? 'active' : ''}`}
-            onClick={() => setActiveCategoryId(activeCategoryId === category.id ? null : category.id)}
-          >
-            <div className={`category-icon-modern tone-${index % 2 === 0 ? 'a' : 'b'}`}>
-              <FaLeaf />
-            </div>
-            <p>{category.name}</p>
-          </article>
-        ))}
-      </section>
 
       <section className="best-sellers">
         <div className="section-title">
@@ -213,24 +198,6 @@ export default function Home() {
           </Link>
 
         </nav>
-        <div className="menu-categories">
-          <p>Categories</p>
-          <div className="menu-category-grid">
-            {dbCategories.map((item) => (
-              <button 
-                key={item.id} 
-                type="button" 
-                className="menu-category-item" 
-                onClick={() => {
-                  setActiveCategoryId(item.id);
-                  setMenuOpen(false);
-                }}
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
-        </div>
       </aside>
 
 
@@ -254,7 +221,7 @@ export default function Home() {
           </span>
           <span>Cart</span>
         </button>
-        <a href="https://wa.me/919836820811" className="bottom-item" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <a href="https://wa.me/917319064254" className="bottom-item" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
           <span className="bottom-icon" style={{ color: '#25D366' }}>
             <FaWhatsapp />
           </span>

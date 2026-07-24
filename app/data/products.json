@@ -1,19 +1,13 @@
 [
   {
     "slug": "test",
-    "title": "TEST",
-    "price": "200",
-    "oldPrice": "300",
-    "offer": "20%",
-    "image": "https://pub-ce8688bc6c654bcfb99716f7c9373bcd.r2.dev/bpn/1783768635335_specimen_sculpture_1772807810076.png",
-    "categoryId": 1700000000001,
+    "title": "test",
+    "price": "556356",
+    "oldPrice": "54765464645",
+    "image": "/uploads/1784896353088_0e0410f4-2886-455f-b849-59d44a2f9354.png",
+    "categoryId": null,
     "rating": 5,
     "reviews": 120,
-    "adeniumOptions": {
-      "Multigrafted 8\" Pot": "500",
-      "Multigrafted 10\" Pot": "200",
-      "Single Grafted": "300"
-    },
-    "id": "1783768637022"
+    "id": "1784896353100"
   }
 ]

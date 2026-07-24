@@ -119,10 +119,13 @@ export default function ProductPage() {
         <button className="icon-btn" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
           <FiMenu />
         </button>
-        <Link href="/" className="header-center" aria-label="Blooming Partners Nursery home" style={{ textDecoration: 'none', color: '#1f6b2c', fontSize: '20px', fontWeight: 'bold', textAlign: 'center', lineHeight: '1.2' }}>
-          Blooming Partners Nursery
+        <Link href="/" className="header-center" aria-label="Diamond Nursery home" style={{ textDecoration: 'none', color: '#1f6b2c', fontSize: '20px', fontWeight: 'bold', textAlign: 'center', lineHeight: '1.2' }}>
+          Diamond Nursery
         </Link>
-        <div className="header-actions">
+        <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/admin" className="icon-btn" aria-label="Admin Panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: 'inherit' }}>
+            <FiUser />
+          </Link>
           <button className="icon-btn" aria-label="Shopping bag" onClick={() => setIsSidebarOpen(true)}>
             <FiShoppingBag />
           </button>
@@ -153,7 +156,7 @@ export default function ProductPage() {
       </section>
 
       <section className="product-detail-body">
-        <p className="brand-eyebrow">Blooming Partners Nursery · Best Seller</p>
+        <p className="brand-eyebrow">Diamond Nursery · Best Seller</p>
         <h1>{product.title}</h1>
 
         <div className="rating-line">
@@ -182,12 +185,6 @@ export default function ProductPage() {
         </div>
         <p className="tax-note">Inclusive of all taxes</p>
         <p className="viewing-now">👀 12 people are viewing this right now</p>
-
-        <ul className="highlight-list">
-          {highlights.map((point) => (
-            <li key={point}>{point}</li>
-          ))}
-        </ul>
 
         <div className="delivery-box">
           <p>Check delivery & availability</p>
@@ -246,20 +243,7 @@ export default function ProductPage() {
         </div>
       </section>
 
-      <section className="accordion-block">
-        {accordionData.map((item, index) => {
-          const isOpen = openAccordion === index;
-          return (
-            <div key={item.title} className={`accordion-item ${isOpen ? "open" : ""}`}>
-              <button type="button" onClick={() => setOpenAccordion(isOpen ? -1 : index)}>
-                {item.title}
-                <FiChevronDown className="accordion-caret" />
-              </button>
-              {isOpen && <p className="accordion-body">{item.body}</p>}
-            </div>
-          );
-        })}
-      </section>
+
 
       <section className="recommend-wrap">
         <h3>You May Also Like</h3>
@@ -304,16 +288,7 @@ export default function ProductPage() {
           </Link>
 
         </nav>
-        <div className="menu-categories">
-          <p>Categories</p>
-          <div className="menu-category-grid">
-            {menuCategories.map((item) => (
-              <button key={item} type="button" className="menu-category-item" onClick={() => setMenuOpen(false)}>
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
+
       </aside>
 
       <nav className="bottom-nav visible" aria-label="Primary navigation">
@@ -335,7 +310,7 @@ export default function ProductPage() {
           </span>
           <span>Cart</span>
         </button>
-        <a href="https://wa.me/919836820811" className="bottom-item" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <a href="https://wa.me/917319064254" className="bottom-item" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
           <span className="bottom-icon" style={{ color: '#25D366' }}>
             <FaWhatsapp />
           </span>

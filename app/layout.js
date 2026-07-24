@@ -2,7 +2,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata = {
-  title: "Blooming Partners Nursery",
+  title: "Diamond Nursery",
   description: "Mobile-first nursery storefront homepage"
 };
 

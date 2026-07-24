@@ -25,7 +25,7 @@ export function CartProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const saved = localStorage.getItem("blooming-partners-cart");
+    const saved = localStorage.getItem("diamond-nursery-cart");
     if (saved) {
       try {
         setItems(JSON.parse(saved));
@@ -36,7 +36,7 @@ export function CartProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("blooming-partners-cart", JSON.stringify(items));
+    localStorage.setItem("diamond-nursery-cart", JSON.stringify(items));
   }, [items]);
 
   const addItem = (slug, qty = 1, variant = null) => {

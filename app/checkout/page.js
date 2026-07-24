@@ -18,8 +18,6 @@ import { FaWhatsapp } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import { categories as menuCategories } from "../data/categories";
 
-const FREE_DELIVERY_THRESHOLD = 4999;
-const DELIVERY_CHARGE = 40;
 const toAmount = (value) => {
   const match = String(value).replace(/,/g, "").match(/\d+(?:\.\d+)?/);
   return match ? parseFloat(match[0]) : 0;
@@ -41,8 +39,7 @@ export default function CheckoutPage() {
   ];
 
   const itemTotal = cartItems.reduce((sum, i) => sum + toAmount(i.price) * i.qty, 0);
-  const deliveryCharge = cartItems.length === 0 || itemTotal >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
-  const grandTotal = itemTotal + deliveryCharge;
+  const grandTotal = itemTotal;
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -66,7 +63,7 @@ export default function CheckoutPage() {
       alert("Please select at least one Adenium option.");
       return;
     }
-    const orderId = `BPN-${Date.now().toString().slice(-6)}`;
+    const orderId = `DN-${Date.now().toString().slice(-6)}`;
     const order = {
       id: orderId,
       customer: form.name.trim(),
@@ -95,9 +92,9 @@ export default function CheckoutPage() {
     cartItems.forEach(item => {
       message += `- ${item.title} (x${item.qty}) - Rs. ${(toAmount(item.price) * item.qty).toFixed(2)}\n`;
     });
-    message += `\n*Item Total:* Rs. ${itemTotal.toFixed(2)}\n`;
-    message += `*Delivery Charge:* ${deliveryCharge === 0 ? "FREE" : `Rs. ${deliveryCharge.toFixed(2)}`}\n`;
-    message += `*Total Payable:* Rs. ${grandTotal.toFixed(2)}`;
+    message += `\n*Item Subtotal:* Rs. ${itemTotal.toFixed(2)}\n`;
+    message += `*Delivery Charge:* To be decided by Admin\n`;
+    message += `*Payable Subtotal:* Rs. ${grandTotal.toFixed(2)} (+ delivery charge as confirmed by Admin)`;
 
     if (hasAdenium && selectedAdeniumOptions.length > 0) {
       message += `\n\n*Selected Adenium Options:*\n`;
@@ -107,7 +104,7 @@ export default function CheckoutPage() {
     }
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/919836820811?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/917319064254?text=${encodedMessage}`;
     
     // Open WhatsApp in new window
     window.open(whatsappUrl, '_blank');
@@ -208,15 +205,15 @@ export default function CheckoutPage() {
 
           <div style={{ marginTop: '20px' }}>
             <div className="bill-summary-row">
-              <span>Item Total</span>
+              <span>Item Subtotal</span>
               <strong>Rs. {itemTotal.toFixed(2)}</strong>
             </div>
             <div className="bill-summary-row">
               <span>Delivery Charge</span>
-              <strong>{deliveryCharge === 0 ? "FREE" : `Rs. ${deliveryCharge.toFixed(2)}`}</strong>
+              <strong style={{ color: '#16a34a', fontSize: '13px' }}>To be decided by Admin</strong>
             </div>
             <div className="bill-total-row">
-              <span>Total Payable</span>
+              <span>Total Subtotal</span>
               <strong>Rs. {grandTotal.toFixed(2)}</strong>
             </div>
           </div>
@@ -257,16 +254,7 @@ export default function CheckoutPage() {
             Checkout <FiChevronRight />
           </Link>
         </nav>
-        <div className="menu-categories">
-          <p>Categories</p>
-          <div className="menu-category-grid">
-            {menuCategories.map((item) => (
-              <button key={item} type="button" className="menu-category-item" onClick={() => setMenuOpen(false)}>
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
+
       </aside>
 
       <nav className="bottom-nav visible" aria-label="Primary navigation">
@@ -288,7 +276,7 @@ export default function CheckoutPage() {
           </span>
           <span>Cart</span>
         </button>
-        <a href="https://wa.me/919836820811" className="bottom-item" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <a href="https://wa.me/917319064254" className="bottom-item" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
           <span className="bottom-icon" style={{ color: '#25D366' }}>
             <FaWhatsapp />
           </span>
