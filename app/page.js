@@ -76,7 +76,12 @@ export default function Home() {
     };
   }, [menuOpen]);
 
-  const heroStyle = {};
+  const heroStyle = {
+    backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 60%, transparent 100%), url('https://pub-ce8688bc6c654bcfb99716f7c9373bcd.r2.dev/diamondnursery/9baf8abe-4350-4dc3-b07c-b91b47cae552.png')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
 
   return (
     <main className="mobile-page">
