@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   diamond-nursery:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: diamond-nursery-app
+    container_name: diamond-nursery-web
     restart: unless-stopped
     ports:
       - "127.0.0.1:3080:3000"
