@@ -3963,30 +3963,125 @@ body {
 }
 
 /* Mobile Friendly Responsive Tuning */
-@media (max-width: 640px) {
+.admin-mobile-nav {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.mobile-tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 4px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.mobile-tab-btn.active {
+  background: #15803d;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(21, 128, 61, 0.25);
+}
+
+@media (max-width: 850px) {
+  .admin-mobile-nav {
+    display: grid;
+  }
+
+  .admin-workspace-grid {
+    display: block;
+  }
+
+  .admin-form-col,
+  .admin-list-col {
+    display: none;
+    width: 100%;
+  }
+
+  .admin-form-col.show-mobile,
+  .admin-list-col.show-mobile {
+    display: block;
+  }
+
+  .admin-card-glass.hide-mobile {
+    display: none;
+  }
+
+  .admin-pretty-form input[type="text"],
+  .admin-pretty-form input[type="number"],
+  .admin-pretty-form input[type="password"],
+  .admin-pretty-form select,
+  .admin-pretty-form textarea {
+    font-size: 16px !important; /* Prevents iOS browser auto-zoom on input focus */
+    padding: 14px !important;
+  }
+
   .admin-topbar {
     padding: 14px 16px;
   }
+
   .admin-topbar-inner {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
   }
+
   .admin-top-actions {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
   }
+
+  .admin-top-actions button,
+  .admin-top-actions a {
+    justify-content: center;
+    width: 100%;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
   .admin-container-inner {
     padding: 0 12px;
     margin-top: 16px;
   }
+
   .admin-card-glass {
     padding: 18px;
-    border-radius: 16px;
+    border-radius: 18px;
   }
+
+  .inventory-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .category-filter-bar {
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .inventory-grid {
     grid-template-columns: 1fr;
   }
+
   .form-row-pretty {
     flex-direction: column;
     gap: 0;

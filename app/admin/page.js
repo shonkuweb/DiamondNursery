@@ -51,6 +51,7 @@ export default function AdminPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilterCategory, setSelectedFilterCategory] = useState("all");
   const [previewUrl, setPreviewUrl] = useState("");
+  const [activeMobileTab, setActiveMobileTab] = useState("inventory"); // "inventory" | "form" | "categories"
   
   // Edit mode state
   const [editingProductId, setEditingProductId] = useState(null);
@@ -241,6 +242,7 @@ export default function AdminPage() {
       setAdeniumPriceSingle("");
     }
     
+    setActiveMobileTab("form");
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -343,6 +345,7 @@ export default function AdminPage() {
 
       handleCancelEdit();
       fetchData();
+      setActiveMobileTab("inventory");
 
     } catch (err) {
       console.error(err);
@@ -535,13 +538,38 @@ export default function AdminPage() {
 
       <div className="admin-container-inner">
 
+        {/* Mobile Tab Switcher */}
+        <div className="admin-mobile-nav">
+          <button 
+            type="button"
+            className={`mobile-tab-btn ${activeMobileTab === "inventory" ? "active" : ""}`}
+            onClick={() => setActiveMobileTab("inventory")}
+          >
+            <FiPackage /> Inventory ({filteredProducts.length})
+          </button>
+          <button 
+            type="button"
+            className={`mobile-tab-btn ${activeMobileTab === "form" ? "active" : ""}`}
+            onClick={() => setActiveMobileTab("form")}
+          >
+            {editingProductId ? <FiEdit2 /> : <FiPlus />} {editingProductId ? "Edit" : "+ Product"}
+          </button>
+          <button 
+            type="button"
+            className={`mobile-tab-btn ${activeMobileTab === "categories" ? "active" : ""}`}
+            onClick={() => setActiveMobileTab("categories")}
+          >
+            <FiTag /> Categories ({categories.length})
+          </button>
+        </div>
+
         {/* Main Dashboard Layout */}
         <div className="admin-workspace-grid">
           {/* Left Column: Manage Categories & Product Form */}
-          <div className="admin-form-col">
+          <div className={`admin-form-col ${activeMobileTab === "form" || activeMobileTab === "categories" ? "show-mobile" : ""}`}>
 
             {/* Product Form Card */}
-            <section className={`admin-card-glass ${editingProductId ? "editing-mode" : ""}`}>
+            <section className={`admin-card-glass ${editingProductId ? "editing-mode" : ""} ${activeMobileTab === "categories" ? "hide-mobile" : ""}`}>
               <div className="admin-card-head">
                 <div className="admin-card-title-group">
                   <span className="card-icon-pill">
@@ -703,7 +731,7 @@ export default function AdminPage() {
             </section>
 
             {/* Manage Categories Section */}
-            <section className="admin-card-glass mt-24">
+            <section className={`admin-card-glass mt-24 ${activeMobileTab === "form" ? "hide-mobile" : ""}`}>
               <div className="admin-card-head">
                 <div className="admin-card-title-group">
                   <span className="card-icon-pill teal">
@@ -756,7 +784,7 @@ export default function AdminPage() {
           </div>
 
           {/* Right Column: Inventory Management & Product List */}
-          <div className="admin-list-col">
+          <div className={`admin-list-col ${activeMobileTab === "inventory" ? "show-mobile" : ""}`}>
             <section className="admin-card-glass inventory-card">
               
               <div className="inventory-header-wrap">
